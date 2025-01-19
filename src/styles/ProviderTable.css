@@ -1,0 +1,151 @@
+@import "./colors.css";
+
+.app-container {
+  max-width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title-h1 {
+  font-family: "Arial", sans-serif;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.provider-table {
+  width: 95%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px var(--box-shadow);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.provider-table th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 4px solid var(--border-color);
+}
+
+.provider-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.provider-table tbody tr:nth-of-type(even) {
+  background-color: var(--primary-color-muted);
+}
+
+.provider-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.provider-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.provider-table tbody tr:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.external-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.input-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-bar-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px var(--box-shadow);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.input-bar-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-bar-input {
+  padding: 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-bar-input:focus {
+  border-color: var(--secondary-color);
+}
+
+.input-bar-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-bar-button:hover {
+  background-color: #45a049;
+}
+
+.input-bar-button-disabled {
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
+}
+
+.input-bar-button-disabled:hover {
+  background-color: var(--primary-color-disabled);
+}
+
+.input-bar-error-message-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-bar-error-message {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-13px) translateX(-130px);
+  color: rgb(220, 1, 1);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}

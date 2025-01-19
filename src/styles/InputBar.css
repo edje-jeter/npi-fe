@@ -1,0 +1,87 @@
+@import "./colors.css";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 6px var(--box-shadow);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  padding: 10px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: var(--secondary-color);
+}
+
+.input-error {
+  border-color: var(--error-color)
+}
+
+.input-error:focus {
+  border-color: var(--error-color)
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button-disabled {
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
+}
+
+.button-disabled:hover {
+  background-color: var(--primary-color-disabled);
+}
+
+.error-message-box {
+  position: relative;
+  display: flex;
+  align-items: left;
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-13px) translateX(-130px);
+  color: var(--error-color);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
