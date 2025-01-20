@@ -1,62 +1,60 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../styles/InputBar.css"
+import "../styles/InputBar.css";
+import { createProvider } from "../services/providers";
 
-const InputBar = () => {
-  const [inputValue, setInputValue] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
-  const inputRef = useRef(null)
+const InputBar = ({ shouldRefreshProviders }) => {
+  const [npi, setNpi] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [])
+  }, []);
 
   const validateInput = (value) => {
-    var msg = ""
-    var isDisabled = true
+    var msg = "";
+    var isDisabled = true;
 
     if (value === "") {
-      msg = ""
-      isDisabled = true
+      msg = "";
+      isDisabled = true;
     } else if (/[^0-9]/.test(value)) {
-      msg = "Numbers only"
-      isDisabled = true
+      msg = "Numbers only";
+      isDisabled = true;
     } else if (value.length > 10) {
-      msg = "10 digits only"
-      isDisabled = true
+      msg = "10 digits only";
+      isDisabled = true;
     } else {
-      msg = ""
-      isDisabled = false
+      msg = "";
+      isDisabled = false;
     }
 
-    return [msg === "" ? "" : `*${msg}!`, isDisabled]
-  }
+    return [msg === "" ? "" : `*${msg}!`, isDisabled];
+  };
 
   const handleChange = (e) => {
-    const value = e.target.value
+    const value = e.target.value;
 
-    setInputValue(value)
-    const [msg, isDisabled] = validateInput(value)
-    setErrorMessage(msg)
-    setIsSubmitDisabled(isDisabled)
-  }
+    setNpi(value);
+    const [msg, isDisabled] = validateInput(value);
+    setErrorMessage(msg);
+    setIsSubmitDisabled(isDisabled);
+  };
 
-  const onSubmit = (e) => {
-    // don't do anything for now
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
     if (!isSubmitDisabled) {
-      setInputValue("")
-      setIsSubmitDisabled(true)
-      onSubmit(inputValue)
-      alert(`Submitted: ${inputValue}`)
+      setNpi("");
+      setIsSubmitDisabled(true);
+      await createProvider(npi);
+
+      shouldRefreshProviders();
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -68,11 +66,11 @@ const InputBar = () => {
             placeholder=""
             ref={inputRef}
             type="text"
-            value={inputValue}
+            value={npi}
           />
           <button
-            type="submit" 
-            className={isSubmitDisabled ? "button button-disabled" : "button" }
+            type="submit"
+            className={isSubmitDisabled ? "button button-disabled" : "button"}
             disabled={isSubmitDisabled}
           >
             Submit
@@ -83,7 +81,7 @@ const InputBar = () => {
         </span>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default InputBar
+export default InputBar;

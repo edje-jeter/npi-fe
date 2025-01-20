@@ -40,11 +40,11 @@
 }
 
 .input-error {
-  border-color: var(--error-color)
+  border-color: var(--error-color);
 }
 
 .input-error:focus {
-  border-color: var(--error-color)
+  border-color: var(--error-color);
 }
 
 .button {
